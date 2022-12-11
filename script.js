@@ -16,6 +16,3 @@ likeButton.addEventListener('click', function(){
   likeButton.classList.add('like__active');
 });
 
-
-
-
