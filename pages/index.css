@@ -25,3 +25,10 @@
 
 @import url(../bloks/footer/footer.css);
 @import url(../bloks/footer/__logo/footer__logo.css);
+
+@import url(../bloks/popup/popup.css);
+@import url(../bloks/popup/__profile/popup__profile.css);
+@import url(../bloks/popup/__active/popup__active.css);
+@import url(../bloks/popup/__save-button/popup__save-button.css);
+@import url(../bloks/popup/__body/popup__body.css);
+@import url(../bloks/popup/__close-button/popup__close-button.css);

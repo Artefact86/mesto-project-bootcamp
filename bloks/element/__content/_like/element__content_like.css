@@ -1,7 +1,19 @@
 .element__content_like {
-  max-width: 22px;
-  max-height: 19px;
-  color: #000000;
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../../images/Vectorheart.svg);
   margin-top: auto;
   margin-bottom: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #ffff;
+  border: none;
+}
+
+.element__content_like:hover {
+  cursor: pointer;
+}
+
+.element__content_like.like__active {
+  background-image: url(../../../../images/like-active.svg);
 }

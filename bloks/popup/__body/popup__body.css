@@ -1,0 +1,19 @@
+.popup__body {
+    width: 430px;
+    padding-top: 34px;
+    background-color: #ffffff;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 195px;
+    border-radius: 10px;
+    position: relative;
+}
+
+@media screen and (max-width: 599px) {
+    .popup__body {
+        width: 282px;
+        margin-top: 123px;
+        padding-top: 25px;
+    }
+}
