@@ -22,10 +22,10 @@
 @import url(../blocks/element/__content/element__content.css);
 @import url(../blocks/element/__like-button/element__like-button.css);
 @import url(../blocks/element/__like-button/_active/element__like-button_active.css);
-@import url(../blocks/element/__content/_text/element__content_text.css);
+@import url(../blocks/element/__text/element__text.css);
 
 @import url(../blocks/footer/footer.css);
-@import url(../blocks/footer/__logo/footer__logo.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__profile/popup__profile.css);
