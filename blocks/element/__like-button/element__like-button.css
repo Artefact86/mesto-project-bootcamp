@@ -1,0 +1,17 @@
+.element__like-button {
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/Vectorheart.svg);
+  margin-top: 5px;
+  margin-bottom: 1px;
+  margin-right: 5px;
+  background-repeat: no-repeat;
+  background-color: #ffff;
+  padding: 0;
+  border: none;
+}
+
+.element__like-button:hover {
+  cursor: pointer;
+}
+
