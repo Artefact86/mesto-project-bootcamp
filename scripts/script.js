@@ -3,25 +3,28 @@ const buttonPopupPlace = document.querySelector('.profile__add-button');
 const popupElementProfile = document.querySelector('.popup_type_profile');
 const popupElementPlace = document.querySelector('.popup_type_place');
 const popupsConteiner = document.querySelector('.popups');
+
 //переменные для работы с карточками попапа place
 const formElement = document.querySelector('.popup');
 const nameInputPlace = document.querySelector('.popup__input_text');
 const popupInputImagePlace = document.querySelector('.popup__input_url');
 const popupFormPlace = document.querySelector('.popup__form_place');
 
-
 //переменные для работы с карточками попапа profile
+const profileName = document.querySelector('.profile__name');
+const profileStatus = document.querySelector('.profile__status');
 const popupFormProfile = document.querySelector('.popup__form_profile');
 const nameImputProfile = document.querySelector('.popup_input-name');
 const jobInputProfile = document.querySelector('.popup_input-job');
 
-
-const template = document.querySelector('#template-elements').content;
+const template = document.querySelector('#template-elements').content.querySelector('.element');
 const popupImg = document.querySelector('.popup_type_img');
+const popupImgType = popupImg.querySelector('.popup__image');
+const popupImgCaption = popupImg.querySelector('.popup__caption');
 const elements = document.querySelector('.elements');
 
+const elementTrashDelete = document.querySelector('.element__delete');
 
-const popupCaption = document.querySelector('.popup__caption');
 
 // функция открытия попапа
 function openPopup(popup){
@@ -53,8 +56,10 @@ popupsConteiner.addEventListener('click', function(event){
 // обработчик события добавления новых данных в полях попапа profile
 popupElementProfile.addEventListener('submit', (event) => {
   event.preventDefault();
-  const name = nameImputProfile.value;
-  const job = jobInputProfile.value;
+  profileName.textContent = nameImputProfile.value;
+  profileStatus.textContent = jobInputProfile.value;
+  nameImputProfile.value = '';
+  jobInputProfile.value = '';
   closePopup();
 });
 
@@ -79,25 +84,27 @@ const createCard = (data) => {
   const imageTemplace = card.querySelector('.element__photo');
   imageTemplace.src = data.link;
   imageTemplace.alt = `Изображение ${data.name}`;
+  const likeButtonActive = (event) => {
+    event.target.classList.toggle('like__active');
+  };  
   // навешиваем на картинку обработчик события
   imageTemplace.addEventListener('click', () => {
+    popupImgType.src = data.link;
+    popupImgType.alt = `Изображение ${data.name}`;
+    popupImgCaption.textContent = data.name;
     openPopup(popupImg);
   });
-
   //обязательно возвращаем карточку, иначе она не появится 
   return card;
 };
 
-//initialCards.forEach(data => renderCardElements());
-
-//for(i = initialCards.length - 1; i >= 0; i-- ){
-  //renderCardElements(initialCards[i]);
-//};
-
-const likeButtonActive = (event) => {
-  event.target.classList.toggle('like__active');
+const handeDeleteCard = (event) => {
+  event.target.remove('.element');
 };
- 
+// автоматическая загрузка карточек 
+//initialCards.forEach((data) => renderCard(data));
 
+for(i = initialCards.length - 1; i >= 0; i-- ){
+  renderCard(initialCards[i]);
+};
   
-
