@@ -1,5 +1,10 @@
 .element {
-  max-width: 282px;
+  width: 282px;
   background-color: #FFFFFF;
   border-radius: 10px;
+  position: relative;
+}
+
+.element:hover {
+  cursor: pointer;
 }

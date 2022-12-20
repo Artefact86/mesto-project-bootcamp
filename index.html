@@ -25,6 +25,7 @@
     </section>
     <section class="elements">
       <article class="element">
+        <button class="element__delete" type="button"></button>
         <img class="element__photo" src="./images/kirill-pershin-1088404-kara.png" alt="фотография старого здания в Карачаевске">
         <div class="element__content">
           <h2 class="element__text">Карачаевск</h2>
@@ -32,6 +33,7 @@
         </div>
       </article>
       <article class="element">
+        <button class="element__delete" type="button"></button>
         <img class="element__photo" src="./images/kirill-pershin-1404681-elbrus.png" alt="фотография гора Эльбрус">
         <div class="element__content">
           <h2 class="element__text">Гора Эльбрус</h2>
@@ -39,6 +41,7 @@
         </div>
       </article>
       <article class="element">
+        <button class="element__delete" type="button"></button>
         <img class="element__photo" src="./images/kirill-pershin-1556355-dombai.png" alt="фотография горголыжный курорт Домбай">
         <div class="element__content">
           <h2 class="element__text">Домбай</h2>
@@ -46,6 +49,7 @@
         </div>
       </article>
       <article class="element">
+        <button class="element__delete" type="button"></button>
         <img class="element__photo" src="./images/kirill-pershin-1404681-elbrus.png" alt="фотография гора Эльбрус">
         <div class="element__content">
           <h2 class="element__text">Гора Эльбрус</h2>
@@ -53,6 +57,7 @@
         </div>
       </article>
       <article class="element">
+        <button class="element__delete" type="button"></button>
         <img class="element__photo" src="./images/kirill-pershin-1556355-dombai.png" alt="фотография горголыжный курорт Домбай">
         <div class="element__content">
           <h2 class="element__text">Домбай</h2>
@@ -60,9 +65,10 @@
         </div>
       </article>
       <article class="element">
+        <button class="element__delete" type="button"></button>
         <img class="element__photo" src="./images/kirill-pershin-1088404-kara.png" alt="фотография старого здания в Карачаевске">
         <div class="element__content">
-          <h2 class="element__text">Карачаево-Ч...</h2>
+          <h2 class="element__text">Карачаево-Черкесия</h2>
           <button class="element__like-button element__like-button_active" type="button"></button>
         </div>
       </article>
@@ -73,16 +79,52 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
   
-  <div class="popup">
-    <div class="popup__body">
-      <h2 class="popup__profile">Редактировать профиль</h2>
-      <input class="popup__input" type="text"></input>
-      <input class="popup__input" type="text"></input>
-      <button class="popup__save-button" type="submit">Сохранить</button>   
-      <button class="popup__close-button" type="button"></button>
-    </div>
-  </div>
+  <section class="popups">
+    <section class="popup popup_type_profile">
+      <div class="popup__body">
+        <h2 class="popup__profile">Редактировать профиль</h2>
+        <form name="попап-форма" action="" class="popup__form popup__form_profile">
+          <input type="text" placeholder="Введите имя" class="popup__input popup_input-name" ></input>
+          <input type="text" placeholder="Введите описание" class="popup__input popup_input-job" ></input>
+          <button class="popup__save-button" type="submit">Сохранить</button> 
+        </form>      
+        <button class="popup__close-button" type="button"></button>
+      </div>
+    </section>
+  
+    <section class="popup popup_type_place">
+      <div class="popup__body">
+        <h2 class="popup__profile">Новое место</h2>
+        <form name="попап-форма" action="" class="popup__form popup__form_place">
+          <input type="text" placeholder="Введите название" class="popup__input popup__input_text" ></input>
+          <input type="url" placeholder="Введите ссылку на картинку" class="popup__input popup__input_url" ></input>
+          <button class="popup__save-button popup__save-button_submit" type="submit">Создать</button> 
+        </form>      
+        <button class="popup__close-button " type="button"></button>
+      </div>
+    </section>
 
+    <section class="popup popup_type_img">
+      <div class="popup__img-conteiner">
+        <button class="popup__close-button" type="button"></button>
+        <img class="popup__image" src="" alt="">
+        <p class="popup__caption"></p>
+      </div>
+    </section>
+  </section>
+
+  <template id="template-elements">
+    <article class="element">
+      <button class="element__delete" type="button"></button>
+      <img class="element__photo" src="./images/kirill-pershin-1088404-kara.png" alt="фотография старого здания в Карачаевске">
+      <div class="element__content">
+        <h2 class="element__text">Карачаево-Черкесия</h2>
+        <button class="element__like-button element__like-button_active" type="button"></button>
+      </div>
+    </article>
+  </template>
+  
+  <script src="./scripts/data.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 
