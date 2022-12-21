@@ -23,8 +23,6 @@ const popupImgType = popupImg.querySelector('.popup__image');
 const popupImgCaption = popupImg.querySelector('.popup__caption');
 const elements = document.querySelector('.elements');
 
-const elementTrashDelete = document.querySelector('.element__delete');
-
 
 // функция открытия попапа
 function openPopup(popup){
@@ -84,9 +82,8 @@ const createCard = (data) => {
   const imageTemplace = card.querySelector('.element__photo');
   imageTemplace.src = data.link;
   imageTemplace.alt = `Изображение ${data.name}`;
-  const likeButtonActive = (event) => {
-    event.target.classList.toggle('like__active');
-  };  
+  // навешиваем обработчик собития на кнопку для удаления карточки
+  card.querySelector('.element__delete').addEventListener('click', handeDeleteCard);
   // навешиваем на картинку обработчик события
   imageTemplace.addEventListener('click', () => {
     popupImgType.src = data.link;
@@ -94,13 +91,19 @@ const createCard = (data) => {
     popupImgCaption.textContent = data.name;
     openPopup(popupImg);
   });
+  const likeButtonElement = card.querySelector('.element__like-button');
+  likeButtonElement.addEventListener('click', function(event){
+    event.target.classList.toggle('element__like-button_active');
+    console.log(event);
+  });
   //обязательно возвращаем карточку, иначе она не появится 
   return card;
 };
-
+// функция удаления карточки
 const handeDeleteCard = (event) => {
-  event.target.remove('.element');
+  event.target.closest('.element').remove();
 };
+
 // автоматическая загрузка карточек 
 //initialCards.forEach((data) => renderCard(data));
 
