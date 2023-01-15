@@ -49,6 +49,7 @@ const enableValidation = () => {
 };
 
 enableValidation();
+
 // // переменные для работы с валидацией формы 
 // const formAddProfile = document.forms.user;
 // const formAddPlace = document.forms.newPlace;

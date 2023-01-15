@@ -15,4 +15,4 @@
 Подключенный шрифт:
 
 Inter
-Ссылка на проект: link[https://artefact86.github.io/mesto-project-bootcamp/];
+Ссылка на проект: link[http://artefact86.github.io/mesto-project-bootcamp/];
