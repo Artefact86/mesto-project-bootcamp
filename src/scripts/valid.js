@@ -33,12 +33,16 @@ const isValid = (formElement, inputElement) => {
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  const buttonElement = formElement.querySelector('.button');
+  //toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', () => {
+    inputElement.addEventListener('input',function() {
       isValid(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement);
     });
     
   });
+  
 };
 
 const enableValidation = () => {
@@ -49,6 +53,21 @@ const enableValidation = () => {
 };
 
 enableValidation();
+
+//функция для проверки на валидность всех полей 
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+  if(hasInvalidInput(inputList)) {
+    buttonElement.classList.add('popup__save-button_inactive');
+  } else {
+    buttonElement.classList.remove('popup__save-button_inactive');
+  }
+};
 
 // // переменные для работы с валидацией формы 
 // const formAddProfile = document.forms.user;
