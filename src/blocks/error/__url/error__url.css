@@ -1,5 +1,12 @@
 .error__url{
     position: absolute;
-    top: 179px;
+    top: 215px;
     left: 36px;
+}
+
+@media screen and (max-width: 599px) { 
+    .error__url{
+        top: 236px;
+        left: 22px;
+    }
 }

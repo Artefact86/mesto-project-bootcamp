@@ -1,5 +1,12 @@
 .error__name {
     position: absolute;
-    top: 119px;
+    top: 151px;
     left: 36px;
+}
+
+@media screen and (max-width: 599px) {
+    .error__name {
+        top: 175px;
+        left: 22px;
+    }
 }
