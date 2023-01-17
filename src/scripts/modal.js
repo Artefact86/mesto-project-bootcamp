@@ -57,12 +57,20 @@ const handeDeleteCard = (event) => {
 // функция открытия попапа
 export function openPopup(popup){
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', handleEsc);
   };
   
   // функция закрытия попапа
   export function closePopup(){
     document.querySelector('.popup_opened').classList.remove('popup_opened');
+    document.addEventListener('keydown', handleEsc);
   };
+
+  const handleEsc = (evt) => {
+    if(evt.key === 'Escape'){
+      closePopup(document.querySelector('.popup_opened'));
+    }
+   };
   
   // обработчик события открытия попапа профиля при нажитии кнопки
   buttonPopupProfile.addEventListener('click', function(){
@@ -99,4 +107,5 @@ export function openPopup(popup){
     renderCard({name, link});
     closePopup();
   });
-  
+
+   
