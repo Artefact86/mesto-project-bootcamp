@@ -6,6 +6,7 @@ const popupElementPlace = document.querySelector('.popup_type_place');
 const popupConteiners = document.querySelector('.popups');
 const nameInputPlace = document.querySelector('.popup__input_type_place');
 const popupInputImagePlace = document.querySelector('.popup__input_type_url');
+const popupAvatar = document.querySelector('.popup_type_avatar');
 const popupFormPlace = document.querySelector('.popup__form_place');
 
 //переменные для работы с карточками попапа profile
@@ -18,6 +19,7 @@ const popupImg = document.querySelector('.popup_type_img');
 const popupImgType = popupImg.querySelector('.popup__image');
 const popupImgCaption = popupImg.querySelector('.popup__caption');
 const elements = document.querySelector('.elements');
+const profileButton = document.querySelector('.profile__avatar_overlay');
 
 
 export const renderCard = (data) => {
@@ -80,6 +82,10 @@ export function openPopup(popup){
   // обработчик события открытия попапа плэйса при нажитии кнопки
   buttonPopupPlace.addEventListener('click', function(){
     openPopup(popupElementPlace);
+  });
+
+  profileButton.addEventListener('click', function(){
+    openPopup(popupAvatar);
   });
   
   // обработчик события закрытия попапа при нажатии кнопки

@@ -15,3 +15,9 @@
     background-color: rgba(0, 0, 0, 0.8);
     opacity: .6;
 }
+@media screen and (max-width: 690px) {
+    .profile__avatar_overlay {
+      margin-left: 81px;
+      margin-right: auto;
+    }
+  }
