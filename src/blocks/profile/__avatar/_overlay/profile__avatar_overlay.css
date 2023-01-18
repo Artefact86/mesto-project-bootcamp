@@ -1,5 +1,5 @@
 .profile__avatar_overlay {
-    background-image: url(../../../../images/Vector-avatar.svg);
+    background-image: url('../../../../images/Vector-avatar.svg');
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
