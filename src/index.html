@@ -12,7 +12,8 @@
   </header> 
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/image-avatar.jpg')%>" alt="фотография профиля пользователя">
+        <img class="profile__avatar-photo" src="<%=require('./images/image-avatar.jpg')%>" alt="фотография профиля пользователя">
+        <div class="profile__avatar_overlay"></div>   
       <div class="profile__info">
         <div class="profile__content">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -57,6 +58,19 @@
            required minlength="2"></input>
           <span id="input-url-error" class="error error__url"></span>
           <button class="button popup__save-button popup__save-button_inactive" type="submit">Создать</button> 
+        </form>      
+        <button class="popup__close-button" type="button"></button>
+      </div>
+    </section>
+
+    <section class="popup popup_type_avatar">
+      <div class="popup__body">
+        <h2 class="popup__profile">Обновить аватар</h2>
+        <form name="newPlace" action="" class="popup__form popup__form_avatar" novalidate>
+          <input type="url" id="input-url" placeholder="Введите ссылку на фотографию" class="popup__input popup__input_type_url" 
+           required minlength="2"></input>
+          <span id="input-url-error" class="error error__url"></span>
+          <button class="button popup__save-button popup__save-button_inactive" type="submit">Сохранить</button> 
         </form>      
         <button class="popup__close-button" type="button"></button>
       </div>
