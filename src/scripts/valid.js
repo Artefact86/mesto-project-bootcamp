@@ -1,25 +1,17 @@
-const formElement = document.querySelector('.popup__form');
-const formInput = formElement.querySelector('.popup__input');
-const formError = formElement.querySelector(`#${formInput.id}-error`);
-
-const errorMessage = {
-  empty: 'Вы пропустили это поле',
-  wrongLenght: 'Введите от 2 до 30 символов',
-  wrongUrl: 'Тут должна быть ссылка',
-};
+import { settings } from './constants.js';
 
 
 export const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_error');
+  inputElement.classList.add(settings.inputError);
+  errorElement.classList.add(settings.inputErrorActiv);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('form__input-error_active');
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_error');
-  errorElement.classList.remove('form__input-error_active');
+  inputElement.classList.remove(settings.inputError);
+  errorElement.classList.remove(settings.inputErrorActiv);
   errorElement.textContent = '';
 };
 
@@ -63,9 +55,11 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement) => {
   if(hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup__save-button_inactive');
+    buttonElement.classList.add(settings.buttonElementInactive);
+    buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove('popup__save-button_inactive');
+    buttonElement.classList.remove(settings.buttonElementInactive);
+    buttonElement.disabled = false;
   }
 };
 

@@ -1,27 +1,7 @@
-//переменные для работы с карточками попапа place
-const buttonPopupProfile = document.querySelector('.profile__edit-button');
-const buttonPopupPlace = document.querySelector('.profile__add-button');
-const popupElementProfile = document.querySelector('.popup_type_profile');
-const popupElementPlace = document.querySelector('.popup_type_place');
-const popupConteiners = document.querySelector('.popups');
-const nameInputPlace = document.querySelector('.popup__input_type_place');
-const popupInputImagePlace = document.querySelector('.popup__input_type_url');
-const popupAvatar = document.querySelector('.popup_type_avatar');
-const popupFormPlace = document.querySelector('.popup__form_place');
-
-//переменные для работы с карточками попапа profile
-const profileName = document.querySelector('.profile__name');
-const profileStatus = document.querySelector('.profile__status');
-const nameImputProfile = document.querySelector('.popup__input_type_name');
-const jobInputProfile = document.querySelector('.popup__input_type_job');
-const template = document.querySelector('#template-elements').content.querySelector('.element');
-const popupImg = document.querySelector('.popup_type_img');
-const popupImgType = popupImg.querySelector('.popup__image');
-const popupImgCaption = popupImg.querySelector('.popup__caption');
-const elements = document.querySelector('.elements');
-const profileButton = document.querySelector('.profile__avatar_overlay');
-
-
+import { buttonPopupProfile, buttonPopupPlace, popupElementProfile, popupElementPlace, popupConteiners, nameInputPlace,
+  popupInputImagePlace, popupAvatar, popupFormPlace, profileName, profileStatus, nameImputProfile, jobInputProfile, template, 
+  popupImg, popupImgType, popupImgCaption, elements, profileButton } from "./constants.js";
+  
 export const renderCard = (data) => {
   const card = createCard(data); 
   elements.prepend(card);
@@ -65,22 +45,25 @@ export function openPopup(popup){
   // функция закрытия попапа
   export function closePopup(){
     document.querySelector('.popup_opened').classList.remove('popup_opened');
-    document.addEventListener('keydown', handleEsc);
+    document.removeEventListener('keydown', handleEsc);
   };
 
   const handleEsc = (evt) => {
     if(evt.key === 'Escape'){
-      closePopup(document.querySelector('.popup_opened'));
+      closePopup();
     }
    };
   
   // обработчик события открытия попапа профиля при нажитии кнопки
   buttonPopupProfile.addEventListener('click', function(){
+    nameImputProfile.value = profileName.textContent;
+    jobInputProfile.value = profileStatus.textContent;
     openPopup(popupElementProfile);
   });
   
   // обработчик события открытия попапа плэйса при нажитии кнопки
   buttonPopupPlace.addEventListener('click', function(){
+    
     openPopup(popupElementPlace);
   });
 
@@ -103,6 +86,7 @@ export function openPopup(popup){
     nameImputProfile.value = '';
     jobInputProfile.value = '';
     closePopup();
+    
   });
   
   // обработчик события добавления новых данных в полях попапа place
@@ -112,6 +96,7 @@ export function openPopup(popup){
     const link = popupInputImagePlace.value;
     renderCard({name, link});
     closePopup();
+    popupFormPlace.reset();
   });
 
    
