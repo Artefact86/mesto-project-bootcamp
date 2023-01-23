@@ -28,3 +28,11 @@ export const settings = {
     inputErrorActiv: 'form__input-error_active',
     buttonElementInactive: 'popup__save-button_inactive',
 };
+
+export const config = {
+    baseUrl: 'https://nomoreparties.co/v1/wbf-cohort-4',
+    headers: {
+      authorization: '8ba7845b-fdea-4d24-b67e-45a7e7292acb',
+      'Content-Type': 'application/json'
+    }
+  };

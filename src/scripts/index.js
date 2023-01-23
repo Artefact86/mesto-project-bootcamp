@@ -1,13 +1,7 @@
 import '../pages/index.css'; // добавьте импорт главного файла 
 import { showInputError } from './valid.js';
 import { initialCards } from './data.js';
-import { openPopup, closePopup, renderCard, createCard } from './modal.js';
-
-
-// автоматическая загрузка карточек 
-initialCards.forEach((data) => renderCard(data));
-
-//  for(i = initialCards.length - 1; i >= 0; i-- ){
-//    renderCard(initialCards[i]);
-// };
-  
+import { openPopup } from './modal.js';
+import { createCard,  } from './card.js'
+import { user, getResponse, getUser, getInitialCards, config } from './api.js';
+import { tupiCom } from './api.js';
