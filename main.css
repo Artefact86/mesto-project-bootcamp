@@ -20,6 +20,7 @@
 .element__text{font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:80%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .element__like-button{background-color:#fff;background-image:url(87ed371465c7a6a1cd01.svg);background-repeat:no-repeat;border:none;height:19px;margin-bottom:1px;margin-right:5px;margin-top:5px;padding:0;width:22px}.element__like-button:hover{cursor:pointer}
 .element__like-button_active{background-image:url(fe17a515669479b1e649.svg)}
+.element__like-number{margin:0;padding-left:5px}
 .footer{margin:67px auto 60px;max-width:880px}@media screen and (max-width:320px){.footer{max-width:282px}}
 .footer__copyright{color:#545454;font-size:18px;font-weight:400;line-height:22px}
 .error{font-size:12px;font-weight:400;line-height:15px;min-width:164px}@media screen and (max-width:599px){.error{font-size:10px;font-weight:200;line-height:12px;min-width:150px}}
