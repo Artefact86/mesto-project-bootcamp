@@ -37,14 +37,14 @@ const setEventListeners = (formElement) => {
   
 };
 
-const enableValidation = () => {
+export const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll('.popup__form'));
   formList.forEach((formElement) => {
     setEventListeners(formElement);
   });
 };
 
-enableValidation();
+
 
 //функция для проверки на валидность всех полей 
 const hasInvalidInput = (inputList) => {

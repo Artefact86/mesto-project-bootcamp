@@ -1,9 +1,5 @@
 import { config } from './constants.js';
 
-// const tupiCom = fetch('jsonplaceholder.typicode.com/users');
-// console.log(tupiCom);
-// console.log(config);
-
 export const getResponse = (res) => {
     if(res.ok) {
         return res.json();
@@ -16,38 +12,67 @@ export const getInitialCards = () => {
         headers: config.headers,
     })
     .then(getResponse)
-    .then((result) => {
-        console.log(result)
-    })
-    .catch((err) => {
-        console.log('Ошибка. Запрос не выполнен');
-    })
 };
 
 export const getUser = () => {
     return fetch(`${config.baseUrl}/users/me`, {
         headers: config.headers,
     }).then(getResponse)
-    .then((result) => {
-        console.log(result);
-    })
+
 };
 
-export const addUser = (name, job) => {
+export const addUser = (name, about) => {
     return fetch(`${config.baseUrl}/users/me`, {
-        method: 'PATCH',
+        method: 'POST',
         headers: config.headers,
-        body: JSON.stringify({name, job}),
+        body: JSON.stringify({
+            name: name,
+            about: about
+        })
     })
     .then(getResponse)
 }
 
- export const addCard = (name, link) => {
+ export const addCard = (data) => {
    return fetch(`${config.baseUrl}/cards`, {
      method: 'POST',
      headers: config.headers,
-     body: JSON.stringify({name, link})
+     body: JSON.stringify({
+        name: data.name, 
+        link: data.link
+    })
    })
+   .then(getResponse)
+ }
+
+export const addLike = (id) => {
+    return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+        method: 'PUT',
+        headers: config.headers
+    })
+    .then(getResponse)
+    .then((res) => {
+        console.log(res);
+    })
+}
+
+export const removeLike = (id) => {
+    return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+        method: 'DELETE',
+        headers: config.headers
+    })
+    .then(getResponse)
+}
+
+ export const addAvatar = (avatar) => {
+   return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+        avatar: avatar
+    })
+   })
+   .then(getResponse)
  }
 
  export const deleteCard = (cardId) => {
@@ -60,4 +85,5 @@ export const addUser = (name, job) => {
             return Promise.reject(`Ошибка ${res.status}`);
         }
     })
- }; 
+ };
+ 

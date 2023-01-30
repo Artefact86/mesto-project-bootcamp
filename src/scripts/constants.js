@@ -7,12 +7,16 @@ export const nameInputPlace = document.querySelector('.popup__input_type_place')
 export const popupInputImagePlace = document.querySelector('.popup__input_type_url');
 export const popupAvatar = document.querySelector('.popup_type_avatar');
 export const popupFormPlace = document.querySelector('.popup__form_place');
+export const popupFormProfile =  document.querySelector('.popup__form_profile');
+export const avatarPhoto = document.querySelector('.profile__avatar-photo');
+export const popupFormAvatar = document.querySelector('.popup__form_avatar');
 
 //переменные для работы с карточками попапа profile
 export const profileName = document.querySelector('.profile__name');
 export const profileStatus = document.querySelector('.profile__status');
 export const nameImputProfile = document.querySelector('.popup__input_type_name');
 export const jobInputProfile = document.querySelector('.popup__input_type_job');
+export const avatarInput = document.querySelector('.popup__input_type_avatar');
 export const template = document.querySelector('#template-elements').content.querySelector('.element');
 export const popupImg = document.querySelector('.popup_type_img');
 export const popupImgType = popupImg.querySelector('.popup__image');
@@ -22,6 +26,10 @@ export const profileButton = document.querySelector('.profile__avatar_overlay');
 export const formElement = document.querySelector('.popup__form');
 export const formInput = formElement.querySelector('.popup__input');
 export const formError = formElement.querySelector(`#${formInput.id}-error`);
+export const popupSaveButton = document.querySelector('.popup__save-button');
+export const popupSaveButtonAvatar = document.querySelector('.popup__save-button_avatar');
+export const popupSaveButtonPlace = document.querySelector('.popup__save-button_place');
+export const popupSaveButtonProfile = document.querySelector('.popup__save-button_profile');
 
 export const settings = {
     inputError: 'popup__input_error',

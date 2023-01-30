@@ -1,8 +1,9 @@
 import { buttonPopupProfile, buttonPopupPlace, popupElementProfile, popupElementPlace, popupConteiners, nameInputPlace,
   popupInputImagePlace, popupAvatar, popupFormPlace, profileName, profileStatus, nameImputProfile, jobInputProfile,
-   profileButton } from "./constants.js";
-   import { renderCard, createCard, getInitialCards } from './card.js'
-  
+   profileButton, popupSaveButton, avatarInput, avatarPhoto, popupSaveButtonAvatar, popupSaveButtonPlace, popupSaveButtonProfile } from "./constants.js";
+import { renderCard, createCard, getInitialCards } from './card.js';
+import { renderLoad } from './utils.js';
+import { addCard, addAvatar, addUser } from './api.js';
 // функция открытия попапа
 export function openPopup(popup){
     popup.classList.add('popup_opened');
@@ -55,6 +56,26 @@ export function openPopup(popup){
     closePopup();
     
   });
+
+  export function handleSubmitProfile(evt) {
+    evt.preventDefault();
+    renderLoad(true, popupSaveButtonPlace)
+    addUser(nameImputProfile.value, jobInputProfile.value)
+      .then(res => {
+        profileName.id = res._id,
+        profileName.textContent = res.name,
+        profileStatus.textContent = res.about
+        evt.target.reset();
+        closePopup(popupElementProfile);
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+      .finally(() => {
+        renderLoad(false, popupSaveButtonProfile)
+      })
+  
+  }
   
   // обработчик события добавления новых данных в полях попапа place
   popupFormPlace.addEventListener('submit', (event) => {
@@ -66,4 +87,43 @@ export function openPopup(popup){
     popupFormPlace.reset();
   });
 
-   
+  export function handleSubmitCard(evt) {
+    evt.preventDefault();
+    renderLoad(true, popupSaveButtonPlace, 'Создать', 'Создание...')
+    addCard({
+      name: `${nameInputPlace.value}`,
+      link: `${popupInputImagePlace.value}`
+    })
+      .then((res) => {
+        console.log(res);
+        renderCard(res)
+        evt.target.reset();
+        closePopup();
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+      .finally(() => {
+        renderLoad(false, popupSaveButtonPlace, 'Создать', 'Создание...')
+      })
+  }
+ 
+
+export function handleAvatarSubmit(evt){
+  evt.preventDefault();
+  renderLoad(true, popupSaveButtonAvatar)
+  addAvatar(avatarInput.value)
+    .then((res) => {
+      avatarPhoto.src = res.avatar,
+      evt.target.reset();
+      closePopup();
+    })
+    .catch((err) => {
+      console.log(`Ошибка: ${err}`)
+    })
+    .finally(() => {
+      renderLoad(false, popupSaveButtonAvatar)
+    })
+}
+
+
