@@ -5,3 +5,4 @@ export function renderLoad (isLoading, button, buttonText='Сохранить', 
       button.textContent = buttonText
     }
   };
+  

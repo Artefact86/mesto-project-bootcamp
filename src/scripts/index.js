@@ -5,13 +5,13 @@ import { openPopup, handleSubmitProfile, handleSubmitCard, handleAvatarSubmit } 
 import { createCard, renderCard } from './card.js'
 import { user, getResponse, getUser, getInitialCards, config, addCard, addAvatar } from './api.js';
 import { tupiCom, addLike } from './api.js';
-import { profileName, profileStatus, elements, popupFormPlace, popupFormProfile, popupFormAvatar } from './constants';
+import { profileName, profileStatus, elements, popupFormPlace, popupFormProfile, popupFormAvatar, popupDeleteCard, buttonTrash } from './constants';
 
 popupFormPlace.addEventListener('submit', handleSubmitCard);
 popupFormProfile.addEventListener('submit', handleSubmitProfile);
 popupFormAvatar.addEventListener('submit', handleAvatarSubmit);
-
-
+//buttonTrash.addEventListener('click', openPopup(popupDeleteCard));
+   
 Promise.all([getInitialCards(), getUser()])
   .then(([cards, profileData]) => {
       profileName.textContent =  profileData.name;

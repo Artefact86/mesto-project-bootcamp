@@ -1,0 +1,16 @@
+.popup__body_delete {
+    width: 430px;
+    min-height: 180px;
+    background-color: #ffffff;
+    flex-direction: column;
+    border-radius: 10px;
+    position: relative;
+}
+
+@media screen and (max-width: 599px) {
+    .popup__body_delete {
+        width: 282px;
+        margin-top: 123px;
+        padding-top: 25px;
+    }
+}

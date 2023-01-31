@@ -30,6 +30,8 @@ export const popupSaveButton = document.querySelector('.popup__save-button');
 export const popupSaveButtonAvatar = document.querySelector('.popup__save-button_avatar');
 export const popupSaveButtonPlace = document.querySelector('.popup__save-button_place');
 export const popupSaveButtonProfile = document.querySelector('.popup__save-button_profile');
+export const buttonTrash = template.querySelector('.element__delete');
+export const popupDeleteCard = document.querySelector('.popup_delete-card');
 
 export const settings = {
     inputError: 'popup__input_error',

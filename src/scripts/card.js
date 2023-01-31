@@ -2,13 +2,16 @@ import { initialCards } from './data.js';
 import { template, popupImg, popupImgType, popupImgCaption, elements, profileName } from './constants.js';
 import { openPopup } from './modal.js';
 import { deleteCard, addLike, removeLike  } from './api.js';
+import { data } from 'jquery';
 
 
 
 
   // функция добавления карточки 
   export const createCard = (data) => {
+    console.log(data);
     const card = template.cloneNode(true);
+    const trashElement = card.querySelector('.element__delete');
     card.id = data._id;
     //наполняем данными функцию
     card.querySelector('.element__text').textContent = data.name;
@@ -16,7 +19,16 @@ import { deleteCard, addLike, removeLike  } from './api.js';
     imageTemplace.src = data.link;
     imageTemplace.alt = `Изображение ${data.name}`;
     // навешиваем обработчик собития на кнопку для удаления карточки
-    card.querySelector('.element__delete').addEventListener('click', handeDeleteCard);
+    //trashElement.addEventListener('click', handeDeleteCard);
+    trashElement.addEventListener('click', () => {
+       deleteCard(data._id)
+       .then(() => {
+        document.getElementById(`${card.id}`.remove())
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+    });
     // навешиваем на картинку обработчик события
     imageTemplace.addEventListener('click', () => {
       popupImgType.src = data.link;
@@ -25,14 +37,10 @@ import { deleteCard, addLike, removeLike  } from './api.js';
       openPopup(popupImg);
     });
     const likeElement = card.querySelector('.element__like-button');
-    //console.log(likeElement);
-    card.querySelector('.element__like-number').textContent = data.likes.length;
     likeElement.addEventListener('click', likeCard);
+    card.querySelector('.element__like-number').textContent = data.likes.length;
     data.likes.forEach((like) => checkLikes(like._id, likeElement));
-    // const likeButtonElement = card.querySelector('.element__like-button');
-    // likeButtonElement.addEventListener('click', function(event){
-    //   event.target.classList.toggle('element__like-button_active');
-    // });
+
     //обязательно возвращаем карточку, иначе она не появится 
     return card;
   };
@@ -41,17 +49,22 @@ import { deleteCard, addLike, removeLike  } from './api.js';
     event.target.closest('.element').remove();
   };
 
+  export function handeDeleteCardSerever(evt) {
+    evt.preventDefault();
+    deleteCard(cardId)
+      .then((res) => {
+        document.getElementById(`${cardId}`.remove())
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+  }
+  
+
   export const renderCard = (data) => {
     elements.prepend(createCard(data));
   };
   
-  const checkLikesLength = (id, length, number, cardId) => {
-    if (cardId === id) {
-        number.textContent = length
-    }
-  };
-  
-
   function likeCard(evt){
     evt.preventDefault();
     const cardLike = evt.target.closest('.element');
@@ -77,11 +90,19 @@ import { deleteCard, addLike, removeLike  } from './api.js';
     }
   }
  
-  const checkLikes = (likeItem, likeButton) => {
+  const checkLikes = (likeItem, likeButton, length ) => {
+    const likeNumber = template.querySelector('.element__like-number') 
     if(likeItem === profileName.id) {
-      likeButton.classList.add('element__like-button_active')
+      likeButton.classList.add('element__like-button_active');
+      likeNumber.textContent += 1
     }
   }
-  
-  
 
+  const checkLikesLength = (id, length, number, cardId) => {
+    if (cardId === id) {
+        number.textContent = length       
+    }
+  };
+  
+  
+  
