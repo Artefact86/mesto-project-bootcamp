@@ -7,10 +7,15 @@ import { user, getResponse, getUser, getInitialCards, config, addCard, addAvatar
 import { tupiCom, addLike } from './api.js';
 import { profileName, profileStatus, elements, popupFormPlace, popupFormProfile, popupFormAvatar, popupDeleteCard, buttonTrash } from './constants';
 
+
 popupFormPlace.addEventListener('submit', handleSubmitCard);
 popupFormProfile.addEventListener('submit', handleSubmitProfile);
 popupFormAvatar.addEventListener('submit', handleAvatarSubmit);
 //buttonTrash.addEventListener('click', openPopup(popupDeleteCard));
+export let idUser;
+getUser().then((data) => idUser = data._id);
+
+
    
 Promise.all([getInitialCards(), getUser()])
   .then(([cards, profileData]) => {

@@ -45,19 +45,16 @@ export const addUser = (name, about) => {
    .then(getResponse)
  }
 
-export const addLike = (id) => {
-    return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+export const addLike = (cardId) => {
+    return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
         method: 'PUT',
         headers: config.headers
     })
     .then(getResponse)
-    .then((res) => {
-        console.log(res);
-    })
 }
 
-export const removeLike = (id) => {
-    return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+export const removeLike = (cardId) => {
+    return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
         method: 'DELETE',
         headers: config.headers
     })
