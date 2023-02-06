@@ -1,8 +1,11 @@
 import { initialCards } from './data.js';
-import { template, popupImg, popupImgType, popupImgCaption, elements, profileName, likeButton, popupDeleteCard, confirmationCardDelete } from './constants.js';
-import { openPopup } from './modal.js';
+import {
+  template, popupImg, popupImgType, popupImgCaption, elements, profileName, likeButton, popupDeleteCard, confirmationCardDelete,
+} from './constants.js';
+import { openPopup, closePopup } from './modal.js';
 import { deleteCard, addLike, removeLike } from './api.js';
 import { idUser } from './index.js';
+import { renderLoad } from './utils.js';
 
 
 // функция добавления карточки 
@@ -22,24 +25,9 @@ export const createCard = (data) => {
   if (data.owner._id !== idUser) {
     trashElement.remove()
   } else {
-    trashElement.addEventListener('click', (evt) => {
-      evt.preventDefault();
-      openPopup(popupDeleteCard);    
-    });
-
+    trashElement.addEventListener('click', handeDeleteCard);
   }
-  //console.log(confirmationCardDelete);
-  confirmationCardDelete.addEventListener('click', () => {
-    deleteCard(data._id)
-      .then(() => {
-        handeDeleteCard()
-        })
-        .catch((err) => {
-          console.log(`Ошибка: ${err}`)
-        })
-       
-  })
-
+  
   // навешиваем на картинку обработчик события
   imageTemplace.addEventListener('click', () => {
     popupImgType.src = data.link;
@@ -47,15 +35,36 @@ export const createCard = (data) => {
     popupImgCaption.textContent = data.name;
     openPopup(popupImg);
   });
+
   likeElement.addEventListener('click', () => likeCard(countLike, likeElement));
 
   //обязательно возвращаем карточку, иначе она не появится 
   return card;
 };
+
+export function serverDeleteCard (evt) {
+  renderLoad(true, confirmationCardDelete, 'Да', 'Удаление...')
+  const deleteCardId = popupDeleteCard.id;
+  deleteCard(popupDeleteCard.id)
+    .then((res) => {
+      popupDeleteCard.id = ''
+      document.getElementById(`${deleteCardId}`).remove()
+      handeDeleteCard()
+      closePopup(popupDeleteCard) 
+    })
+    .catch((err) => {
+      console.log(`Ошибка: ${err}`)
+    })
+    .finally(() => {
+      renderLoad(false, confirmationCardDelete, 'Да', 'Удаление...')
+    })
+} 
 // функция удаления карточки
 const handeDeleteCard = (event) => {
   event.preventDefault();
-  event.target.closest('.element').remove();
+  const elementCard = event.target.closest('.element');
+  openPopup(popupDeleteCard);
+  popupDeleteCard.id = elementCard.id;
 };
 
 export const renderCard = (data) => {
@@ -68,18 +77,16 @@ const likeCard = (countLike, likeElement) => {
       .then((dataCard) => {
         likeElement.classList.remove('element__like-button_active');
         countLike.textContent = dataCard.likes.length;
-   
-        })
-        .catch((err) => {
-          console.log(`Ошибка: ${err}`)
-        })
-      } else {
-        addLike(likeElement.closest('.element').id)
-        .then((dataCard) => {
-          likeElement.classList.add('element__like-button_active');
-          countLike.textContent = dataCard.likes.length;
-          
-       
+
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+  } else {
+    addLike(likeElement.closest('.element').id)
+      .then((dataCard) => {
+        likeElement.classList.add('element__like-button_active');
+        countLike.textContent = dataCard.likes.length;
       })
       .catch((err) => {
         console.log(`Ошибка нах: ${err}`)
@@ -96,6 +103,6 @@ function isLiked(data, countLike, likeElement) {
       likeElement.classList.add('element__like-button_active')
     }
   })
-  
+
 }
 

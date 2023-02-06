@@ -7,6 +7,7 @@ import {
 import { renderCard, createCard, getInitialCards } from './card.js';
 import { renderLoad } from './utils.js';
 import { addCard, addAvatar, addUser, deleteCard } from './api.js';
+import { idUser } from "./index.js";
 // функция открытия попапа
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -14,7 +15,7 @@ export function openPopup(popup) {
 };
 
 // функция закрытия попапа
-function closePopup() {
+export function closePopup() {
   document.querySelector('.popup_opened').classList.remove('popup_opened');
   document.removeEventListener('keydown', handleEsc);
 };
@@ -85,7 +86,7 @@ popupFormPlace.addEventListener('submit', (event) => {
   event.preventDefault();
   const name = nameInputPlace.value;
   const link = popupInputImagePlace.value;
-  renderCard({ name, link });
+  renderCard({ name, link, idUser });
   closePopup();
   popupFormPlace.reset();
 });
@@ -98,7 +99,6 @@ export function handleSubmitCard(evt) {
     link: `${popupInputImagePlace.value}`
   })
     .then((res) => {
-      console.log(res);
       renderCard(res)
       evt.target.reset();
       closePopup();

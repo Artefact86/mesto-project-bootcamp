@@ -34,6 +34,7 @@ export const buttonTrash = template.querySelector('.element__delete');
 export const popupDeleteCard = document.querySelector('.popup_delete-card');
 export const confirmationCardDelete = document.querySelector('.popup_button_delete');
 
+
 export const settings = {
     inputError: 'popup__input_error',
     inputErrorActiv: 'form__input-error_active',

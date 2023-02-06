@@ -1,17 +1,22 @@
 import '../pages/index.css'; // добавьте импорт главного файла 
 import { showInputError, enableValidation } from './valid.js';
 import { initialCards } from './data.js';
-import { openPopup, handleSubmitProfile, handleSubmitCard, handleAvatarSubmit } from './modal.js';
-import { createCard, renderCard } from './card.js'
+import { openPopup, handleSubmitProfile, handleSubmitCard, handleAvatarSubmit, closePopup } from './modal.js';
+import { createCard, renderCard, serverDeleteCard } from './card.js'
 import { user, getResponse, getUser, getInitialCards, config, addCard, addAvatar } from './api.js';
 import { tupiCom, addLike } from './api.js';
-import { profileName, profileStatus, elements, popupFormPlace, popupFormProfile, popupFormAvatar, popupDeleteCard, buttonTrash } from './constants';
+import { profileName, profileStatus, elements, popupFormPlace, popupFormProfile, popupFormAvatar, popupDeleteCard,
+confirmationCardDelete } from './constants';
 
 
 popupFormPlace.addEventListener('submit', handleSubmitCard);
 popupFormProfile.addEventListener('submit', handleSubmitProfile);
 popupFormAvatar.addEventListener('submit', handleAvatarSubmit);
-//buttonTrash.addEventListener('click', openPopup(popupDeleteCard));
+confirmationCardDelete.addEventListener('click', () => {
+  serverDeleteCard();
+  closePopup(popupDeleteCard);
+});
+
 export let idUser;
 getUser().then((data) => idUser = data._id);
 
