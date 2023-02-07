@@ -5,7 +5,7 @@ import {
 import { openPopup, closePopup } from './modal.js';
 import { deleteCard, addLike, removeLike } from './api.js';
 import { idUser } from './index.js';
-import { renderLoad } from './utils.js';
+import { renderLoad } from './constants.js';
 
 
 // функция добавления карточки 
@@ -27,7 +27,6 @@ export const createCard = (data) => {
   } else {
     trashElement.addEventListener('click', handeDeleteCard);
   }
-  
   // навешиваем на картинку обработчик события
   imageTemplace.addEventListener('click', () => {
     popupImgType.src = data.link;
@@ -49,9 +48,10 @@ export function serverDeleteCard (evt) {
     .then((res) => {
       popupDeleteCard.id = ''
       document.getElementById(`${deleteCardId}`).remove()
+      closePopup(popupDeleteCard)
       handeDeleteCard()
-      closePopup(popupDeleteCard) 
     })
+    
     .catch((err) => {
       console.log(`Ошибка: ${err}`)
     })

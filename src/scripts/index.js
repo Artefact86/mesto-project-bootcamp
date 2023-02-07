@@ -1,5 +1,5 @@
 import '../pages/index.css'; // добавьте импорт главного файла 
-import { showInputError, enableValidation } from './valid.js';
+import { showInputError, enableValidation, settings } from './valid.js';
 import { initialCards } from './data.js';
 import { openPopup, handleSubmitProfile, handleSubmitCard, handleAvatarSubmit, closePopup } from './modal.js';
 import { createCard, renderCard, serverDeleteCard } from './card.js'
@@ -12,23 +12,18 @@ confirmationCardDelete } from './constants';
 popupFormPlace.addEventListener('submit', handleSubmitCard);
 popupFormProfile.addEventListener('submit', handleSubmitProfile);
 popupFormAvatar.addEventListener('submit', handleAvatarSubmit);
-confirmationCardDelete.addEventListener('click', () => {
-  serverDeleteCard();
-  closePopup(popupDeleteCard);
-});
+confirmationCardDelete.addEventListener('click', () => {serverDeleteCard()});
 
 export let idUser;
-getUser().then((data) => idUser = data._id);
-
-
    
 Promise.all([getInitialCards(), getUser()])
   .then(([cards, profileData]) => {
       profileName.textContent =  profileData.name;
       profileStatus.textContent = profileData.about;
       profileName.id = profileData._id;
+      idUser = profileData._id;
       cards.reverse().forEach(renderCard);
-      enableValidation();
+      enableValidation(settings);
     })
   .catch((err) => {
     console.log(`Ошибка: ${err}`);

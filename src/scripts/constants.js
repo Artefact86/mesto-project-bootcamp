@@ -35,11 +35,11 @@ export const popupDeleteCard = document.querySelector('.popup_delete-card');
 export const confirmationCardDelete = document.querySelector('.popup_button_delete');
 
 
-export const settings = {
-    inputError: 'popup__input_error',
-    inputErrorActiv: 'form__input-error_active',
-    buttonElementInactive: 'popup__save-button_inactive',
-};
+// export const settings = {
+//     inputError: 'popup__input_error',
+//     inputErrorActiv: 'form__input-error_active',
+//     buttonElementInactive: 'popup__save-button_inactive',
+// };
 
 export const config = {
     baseUrl: 'https://nomoreparties.co/v1/wbf-cohort-4',
@@ -48,3 +48,12 @@ export const config = {
       'Content-Type': 'application/json'
     }
   };
+
+  export function renderLoad (isLoading, button, buttonText='Сохранить', loadingText='Сохранение...') {
+    if (isLoading) {
+      button.textContent = loadingText
+    } else {
+      button.textContent = buttonText
+    }
+  };
+  

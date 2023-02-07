@@ -4,9 +4,9 @@ import {
   profileButton, popupSaveButton, avatarInput, avatarPhoto, popupSaveButtonAvatar, popupSaveButtonPlace, popupSaveButtonProfile,
   buttonTrash
 } from "./constants.js";
-import { renderCard, createCard, getInitialCards } from './card.js';
-import { renderLoad } from './utils.js';
-import { addCard, addAvatar, addUser, deleteCard } from './api.js';
+import { renderCard } from './card.js';
+import { renderLoad } from './constants.js';
+import { addCard, addAvatar, addUser } from './api.js';
 import { idUser } from "./index.js";
 // функция открытия попапа
 export function openPopup(popup) {
@@ -50,17 +50,6 @@ popupConteiners.addEventListener('click', function (event) {
   }
 });
 
-// обработчик события добавления новых данных в полях попапа profile
-popupElementProfile.addEventListener('submit', (event) => {
-  event.preventDefault();
-  profileName.textContent = nameImputProfile.value;
-  profileStatus.textContent = jobInputProfile.value;
-  nameImputProfile.value = '';
-  jobInputProfile.value = '';
-  closePopup();
-
-});
-
 export function handleSubmitProfile(evt) {
   evt.preventDefault();
   renderLoad(true, popupSaveButtonPlace)
@@ -80,16 +69,6 @@ export function handleSubmitProfile(evt) {
     })
 
 }
-
-// обработчик события добавления новых данных в полях попапа place
-popupFormPlace.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const name = nameInputPlace.value;
-  const link = popupInputImagePlace.value;
-  renderCard({ name, link, idUser });
-  closePopup();
-  popupFormPlace.reset();
-});
 
 export function handleSubmitCard(evt) {
   evt.preventDefault();
