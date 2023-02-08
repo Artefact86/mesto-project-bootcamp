@@ -1,0 +1,13 @@
+.error__url_avatar {
+    position: absolute;
+    top: 150px;
+    left: 36px;
+}
+
+
+@media screen and (max-width: 599px) { 
+    .error__url_avatar{
+        top: 180px;
+        left: 22px;
+    }
+}

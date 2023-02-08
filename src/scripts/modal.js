@@ -16,7 +16,9 @@ export function openPopup(popup) {
 
 // функция закрытия попапа
 export function closePopup() {
-  document.querySelector('.popup_opened').classList.remove('popup_opened');
+  const openPopup = document.querySelector('.popup_opened');
+  if (!openPopup) return;
+  openPopup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleEsc);
 };
 

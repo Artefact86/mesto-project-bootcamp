@@ -1,3 +1,5 @@
+import { formElement } from "./constants";
+
 //import { settings } from './constants.js';
 export const settings = {
   formSelector: ".popup__form",
@@ -39,7 +41,11 @@ const setEventListeners = (formElement, settings) => {
       isValid(formElement, inputElement, settings);
       toggleButtonState(inputList, buttonElement, settings);
     });
-    
+    formElement.addEventListener('reset', () => {
+      setTimeout(() => {
+        toggleButtonState(inputList, buttonElement, settings), 0 })
+      
+    })
   });
   
 };
@@ -67,3 +73,4 @@ const toggleButtonState = (inputList, buttonElement, settings) => {
     buttonElement.disabled = false;
   }
 };
+

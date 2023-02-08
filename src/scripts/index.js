@@ -6,7 +6,7 @@ import { createCard, renderCard, serverDeleteCard } from './card.js'
 import { user, getResponse, getUser, getInitialCards, config, addCard, addAvatar } from './api.js';
 import { tupiCom, addLike } from './api.js';
 import { profileName, profileStatus, elements, popupFormPlace, popupFormProfile, popupFormAvatar, popupDeleteCard,
-confirmationCardDelete } from './constants';
+confirmationCardDelete, avatarPhoto } from './constants';
 
 
 popupFormPlace.addEventListener('submit', handleSubmitCard);
@@ -22,6 +22,7 @@ Promise.all([getInitialCards(), getUser()])
       profileStatus.textContent = profileData.about;
       profileName.id = profileData._id;
       idUser = profileData._id;
+      avatarPhoto.src = profileData.avatar;
       cards.reverse().forEach(renderCard);
       enableValidation(settings);
     })

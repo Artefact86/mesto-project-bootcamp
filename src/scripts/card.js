@@ -49,7 +49,7 @@ export function serverDeleteCard (evt) {
       popupDeleteCard.id = ''
       document.getElementById(`${deleteCardId}`).remove()
       closePopup(popupDeleteCard)
-      handeDeleteCard()
+      
     })
     
     .catch((err) => {
