@@ -27,6 +27,7 @@
 .error__name{left:36px;position:absolute;top:151px}@media screen and (max-width:599px){.error__name{left:22px;top:175px}}
 .error__job{left:36px;position:absolute;top:212px}@media screen and (max-width:599px){.error__job{left:22px;top:236px}}
 .error__url{left:36px;position:absolute;top:215px}@media screen and (max-width:599px){.error__url{left:22px;top:236px}}
+.error__url_avatar{left:36px;position:absolute;top:150px}@media screen and (max-width:599px){.error__url_avatar{left:22px;top:180px}}
 .popup__input_error{border-bottom:1px solid red}
 .form__input-error_active{color:red}
 .popup__save-button_inactive{background-color:#fff;border:1px solid #000;border-radius:2px;color:#000;opacity:.2;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.popup__save-button_inactive:hover{cursor:default;opacity:.2}
