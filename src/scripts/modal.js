@@ -54,7 +54,7 @@ popupConteiners.addEventListener('click', function (event) {
 
 export function handleSubmitProfile(evt) {
   evt.preventDefault();
-  renderLoad(true, popupSaveButtonPlace)
+  renderLoad(true, popupSaveButtonProfile)
   addUser(nameImputProfile.value, jobInputProfile.value)
     .then(res => {
       profileName.id = res._id,
